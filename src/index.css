@@ -1,0 +1,30 @@
+body {
+  text-align: center;
+  background-color: darkgrey;
+}
+
+ul {
+  list-style: none;
+  margin-right: 1%;
+  margin-left: 1%;
+  padding: 0;
+}
+
+.article_card {
+  margin-bottom: 20px;
+  border: 2px solid black;
+}
+
+.article_img {
+  resize: both;
+  max-width: 350px;
+  max-height: 350px;
+  object-fit: contain;
+}
+
+.control_bar {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  gap: 5px;
+}
