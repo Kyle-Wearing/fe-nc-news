@@ -13,3 +13,20 @@ export function getArticles(page) {
     return response.data.articles;
   });
 }
+
+export function getUserByUsername(username) {
+  return api.get(`/users/${username}`).then((response) => {
+    return response.data.user.username;
+  });
+}
+
+export function createNewUser(username, name) {
+  return api
+    .post("/users", {
+      username,
+      name,
+    })
+    .then((response) => {
+      return response.data.user.username;
+    });
+}
