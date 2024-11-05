@@ -4,22 +4,25 @@ body {
 }
 
 ul {
-  list-style: none;
-  margin-right: 1%;
-  margin-left: 1%;
+  list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
 .article_card {
-  margin-bottom: 20px;
+  max-width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 25px;
   border: 2px solid black;
 }
 
 .article_img {
-  resize: both;
-  max-width: 350px;
-  max-height: 350px;
-  object-fit: contain;
+  width: 350px;
+  height: auto;
+  max-width: 100%;
 }
 
 .control_bar {
@@ -27,4 +30,15 @@ ul {
   grid-auto-flow: column;
   align-items: center;
   gap: 5px;
+}
+
+.singl_article_img {
+  width: 350px;
+  height: auto;
+  max-width: 100%;
+}
+
+.comment_card {
+  border: 2px solid black;
+  margin-bottom: 3px;
 }
