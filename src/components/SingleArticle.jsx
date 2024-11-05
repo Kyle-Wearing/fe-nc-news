@@ -25,17 +25,20 @@ export function SingleArticle() {
   const { title, author, body, article_img_url, created_at, votes } = article;
 
   return (
-    <div
-      onClick={() => {
-        navigate(-1);
-      }}
-    >
+    <div>
+      <button
+        onClick={() => {
+          navigate(-1);
+        }}
+      >
+        go back
+      </button>
       <h1>{title}</h1>
-      <h2>{author}</h2>
-      <h5>{created_at}</h5>
-      <h5>{votes}</h5>
-      <img src={article_img_url} />
+      <h2>posted by: {author}</h2>
+      <h5>date: {created_at}</h5>
+      <img className="singl_article_img" src={article_img_url} />
       <p>{body}</p>
+      <h5>votes: {votes}</h5>
       <Comments />
     </div>
   );

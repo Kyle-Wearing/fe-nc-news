@@ -20,6 +20,7 @@ ul {
   max-width: 350px;
   max-height: 350px;
   object-fit: contain;
+  margin: 0;
 }
 
 .control_bar {
@@ -27,4 +28,12 @@ ul {
   grid-auto-flow: column;
   align-items: center;
   gap: 5px;
+}
+
+.singl_article_img {
+  resize: both;
+  max-width: 400px;
+  max-height: 400px;
+  object-fit: contain;
+  margin: 0;
 }

@@ -20,6 +20,12 @@ export function getArticleById(article_id) {
   });
 }
 
+export function getCommentsByArticle(article_id) {
+  return api.get(`/articles/${article_id}/comments`).then((response) => {
+    return response.data.comments;
+  });
+}
+
 export function getUserByUsername(username) {
   return api.get(`/users/${username}`).then((response) => {
     return response.data.user.username;
