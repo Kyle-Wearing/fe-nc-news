@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-import { Articles } from "./components/articles";
+import { Articles } from "./components/Articles";
 import { Navbar } from "./components/Navbar";
-import { Home } from "./components/home";
+import { Home } from "./components/Home";
 import { useState } from "react";
 import { LoginSignup } from "./components/LoginSignup";
 import { SingleArticle } from "./components/SingleArticle";
