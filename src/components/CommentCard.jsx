@@ -1,13 +1,32 @@
+import { useState } from "react";
 import { deleteCommentById } from "../../api";
 
 export function CommentCard(props) {
   const { author, body, created_at, votes, comment_id } = props.comment;
-  const { username } = props;
+  const { username, setComments } = props;
+
+  const [isDeleting, setIsDeleting] = useState(false);
 
   function handleDelete(id) {
+    setIsDeleting(true);
     return deleteCommentById(id).then((resposne) => {
-      console.log(resposne);
+      setComments((currComments) => {
+        const commentToRemove = currComments.findIndex(
+          (comment) => comment.comment_id === id
+        );
+
+        const newComments = [...currComments];
+
+        newComments.splice(commentToRemove, 1);
+
+        return newComments;
+      });
+      setIsDeleting(false);
     });
+  }
+
+  if (isDeleting) {
+    return <h1>Deleting comment...</h1>;
   }
 
   return (
