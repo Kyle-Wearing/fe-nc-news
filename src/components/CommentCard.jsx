@@ -4,7 +4,11 @@ export function CommentCard(props) {
   const { author, body, created_at, votes, comment_id } = props.comment;
   const { username } = props;
 
-  function handleDelete(id) {}
+  function handleDelete(id) {
+    return deleteCommentById(id).then((resposne) => {
+      console.log(resposne);
+    });
+  }
 
   return (
     <div className="comment_card">

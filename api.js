@@ -42,6 +42,12 @@ export function postCommentByArticleId(article_id, username, body) {
     });
 }
 
+export function deleteCommentById(comment_id) {
+  return api.delete(`/comments/${comment_id}`).then((response) => {
+    return response;
+  });
+}
+
 export function getUserByUsername(username) {
   return api.get(`/users/${username}`).then((response) => {
     return response.data.user.username;
