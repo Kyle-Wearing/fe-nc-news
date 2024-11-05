@@ -24,7 +24,11 @@ export function CommentList({ username, comments, setComments }) {
       {comments.map((comment) => {
         return (
           <li className="comment_list" key={comment.comment_id}>
-            <CommentCard comment={comment} username={username} />
+            <CommentCard
+              comment={comment}
+              username={username}
+              setComments={setComments}
+            />
           </li>
         );
       })}

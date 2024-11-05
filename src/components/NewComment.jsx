@@ -13,7 +13,6 @@ export function NewComment({ username, setComments }) {
     setIsLoading(true);
     return postCommentByArticleId(article_id, username, input).then(
       (resposne) => {
-        console.log(resposne);
         setComments((currComments) => {
           const newComments = [resposne, ...currComments];
           return newComments;
