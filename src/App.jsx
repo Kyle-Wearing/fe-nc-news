@@ -15,7 +15,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/articles" element={<Articles />} />
-        <Route path="/articles/:article_id" element={<SingleArticle />} />
+        <Route
+          path="/articles/:article_id"
+          element={<SingleArticle username={username} />}
+        />
         <Route
           path="/login-signup"
           element={

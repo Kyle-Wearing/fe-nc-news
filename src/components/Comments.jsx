@@ -1,12 +1,12 @@
 import { CommentList } from "./CommentList";
 import { NewComment } from "./NewComment";
 
-export function Comments() {
+export function Comments({ username }) {
   return (
     <>
       <h1>Comments</h1>
-      <NewComment />
-      <CommentList />
+      <NewComment username={username} />
+      <CommentList username={username} />
     </>
   );
 }

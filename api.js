@@ -34,6 +34,20 @@ export function patchArticleById(article_id, inc_votes) {
     });
 }
 
+export function postCommentByArticleId(article_id, username, body) {
+  return api
+    .post(`/articles/${article_id}/comments`, { username, body })
+    .then((response) => {
+      return response.data.comment;
+    });
+}
+
+export function deleteCommentById(comment_id) {
+  return api.delete(`/comments/${comment_id}`).then((response) => {
+    return response;
+  });
+}
+
 export function getUserByUsername(username) {
   return api.get(`/users/${username}`).then((response) => {
     return response.data.user.username;
