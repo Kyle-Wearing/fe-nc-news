@@ -56,3 +56,10 @@ p {
   margin-left: 15%;
   margin-right: 15%;
 }
+
+.clicked_like_button {
+  background-color: #4caf50;
+  color: white;
+  transform: scale(0.95);
+  box-shadow: inset 0 3px 5px rbga(0, 0, 0, 0.3);
+}
