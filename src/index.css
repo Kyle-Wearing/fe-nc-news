@@ -37,3 +37,8 @@ ul {
   object-fit: contain;
   margin: 0;
 }
+
+.comment_card {
+  border: 2px solid black;
+  margin-bottom: 3px;
+}
