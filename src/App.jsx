@@ -2,12 +2,16 @@ import { Route, Routes } from "react-router-dom";
 import { Articles } from "./components/Articles";
 import { Navbar } from "./components/Navbar";
 import { Home } from "./components/Home";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LoginSignup } from "./components/LoginSignup";
 import { SingleArticle } from "./components/SingleArticle";
 
 function App() {
   const [username, setUsername] = useState(null);
+
+  useEffect(() => {
+    setUsername(sessionStorage.getItem("username"));
+  }, [username]);
 
   return (
     <>
@@ -15,7 +19,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/articles" element={<Articles />} />
-        <Route path="/articles/:article_id" element={<SingleArticle />} />
+        <Route
+          path="/articles/:article_id"
+          element={<SingleArticle username={username} />}
+        />
         <Route
           path="/login-signup"
           element={
