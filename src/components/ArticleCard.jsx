@@ -15,7 +15,7 @@ export function ArticleCard({ article }) {
     <Link to={`/articles/${article_id}`}>
       <li className="article_card">
         <h4>{title}</h4>
-        <p>posted by: {author}</p>
+        <h5>posted by: {author}</h5>
         <p>date: {created_at}</p>
         <img className="article_img" src={article_img_url} />
         <p>votes: {votes}</p>

@@ -36,9 +36,23 @@ ul {
   width: 350px;
   height: auto;
   max-width: 100%;
+  margin-bottom: 10px;
 }
 
-.comment_card {
+.comment_list {
   border: 2px solid black;
   margin-bottom: 3px;
+  margin-left: 25%;
+  margin-right: 25%;
+  padding: 0%;
+}
+
+p {
+  padding: 5px;
+  margin: 0;
+}
+
+.article_text {
+  margin-left: 15%;
+  margin-right: 15%;
 }
