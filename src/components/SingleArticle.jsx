@@ -1,7 +1,8 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { getArticleById, patchArticleById } from "../../api";
+import { getArticleById } from "../../api";
 import { useEffect, useState } from "react";
 import { Comments } from "./Comments";
+import { VoteButtons } from "./VoteButtons";
 
 export function SingleArticle() {
   const { article_id } = useParams();
@@ -9,7 +10,6 @@ export function SingleArticle() {
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [votes, setVotes] = useState(0);
-  const [voteLoading, setVoteLoading] = useState(true);
   const [userVote, setUserVote] = useState(
     Number(localStorage.getItem(`vote_${article_id}`))
   );
@@ -28,23 +28,8 @@ export function SingleArticle() {
         localStorage.setItem(`voted_${article_id}`, 0);
       }
       setIsLoading(false);
-      setVoteLoading(false);
     });
   }, []);
-
-  function handleVote(num) {
-    const vote = userVote < 1 && userVote > -1 ? num : num * 2;
-
-    setVoteLoading(true);
-
-    patchArticleById(article_id, vote).then(() => {
-      setVotes((currVotes) => {
-        return currVotes + vote;
-      });
-      setUserVote(num);
-      setVoteLoading(false);
-    });
-  }
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -67,46 +52,12 @@ export function SingleArticle() {
       <img className="singl_article_img" src={article_img_url} />
       <h4 className="article_text">{body}</h4>
       <h5>votes: {votes}</h5>
-      {!voteLoading ? (
-        <div className="article_votes_container">
-          {userVote !== -1 ? (
-            <button
-              className="unclicked_like_button"
-              disabled={userVote === -1}
-              onClick={() => handleVote(-1)}
-            >
-              ⬇
-            </button>
-          ) : (
-            <button
-              className="clicked_like_button"
-              disabled={userVote === 0}
-              onClick={() => handleVote(0.5)}
-            >
-              ⬇
-            </button>
-          )}
-          {userVote !== 1 ? (
-            <button
-              className="unclicked_like_button"
-              disabled={userVote === 1}
-              onClick={() => handleVote(1)}
-            >
-              ⬆
-            </button>
-          ) : (
-            <button
-              className="clicked_like_button"
-              disabled={userVote === 0}
-              onClick={() => handleVote(-0.5)}
-            >
-              ⬆
-            </button>
-          )}
-        </div>
-      ) : (
-        <h1>Loading...</h1>
-      )}
+      <VoteButtons
+        id={article_id}
+        userVote={userVote}
+        setUserVote={setUserVote}
+        setVotes={setVotes}
+      />
       <Comments />
     </div>
   );
