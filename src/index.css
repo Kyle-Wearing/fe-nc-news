@@ -57,9 +57,29 @@ p {
   margin-right: 15%;
 }
 
+.unclicked_like_button {
+  width: 100%;
+  height: 100%;
+  color: #666;
+  background-color: #f0f0f0;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
 .clicked_like_button {
-  background-color: #4caf50;
-  color: white;
-  transform: scale(0.95);
-  box-shadow: inset 0 3px 5px rbga(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  color: blue;
+  border: 2px solid blue;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.article_votes_container {
+  display: flex;
+  margin-left: 30%;
+  margin-right: 30%;
+  gap: 5%;
 }

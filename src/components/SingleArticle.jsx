@@ -68,10 +68,14 @@ export function SingleArticle() {
       <h4 className="article_text">{body}</h4>
       <h5>votes: {votes}</h5>
       {!voteLoading ? (
-        <>
+        <div className="article_votes_container">
           {userVote !== -1 ? (
-            <button disabled={userVote === -1} onClick={() => handleVote(-1)}>
-              👎
+            <button
+              className="unclicked_like_button"
+              disabled={userVote === -1}
+              onClick={() => handleVote(-1)}
+            >
+              ⬇
             </button>
           ) : (
             <button
@@ -79,12 +83,16 @@ export function SingleArticle() {
               disabled={userVote === 0}
               onClick={() => handleVote(0.5)}
             >
-              👎
+              ⬇
             </button>
           )}
           {userVote !== 1 ? (
-            <button disabled={userVote === 1} onClick={() => handleVote(1)}>
-              👍
+            <button
+              className="unclicked_like_button"
+              disabled={userVote === 1}
+              onClick={() => handleVote(1)}
+            >
+              ⬆
             </button>
           ) : (
             <button
@@ -92,10 +100,10 @@ export function SingleArticle() {
               disabled={userVote === 0}
               onClick={() => handleVote(-0.5)}
             >
-              👍
+              ⬆
             </button>
           )}
-        </>
+        </div>
       ) : (
         <h1>Loading...</h1>
       )}
