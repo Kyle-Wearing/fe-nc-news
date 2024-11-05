@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { getArticleById } from "../../api";
 import { useEffect, useState } from "react";
+import { Comments } from "./Comments";
 
 export function SingleArticle() {
   const { article_id } = useParams();
@@ -35,6 +36,7 @@ export function SingleArticle() {
       <h5>{votes}</h5>
       <img src={article_img_url} />
       <p>{body}</p>
+      <Comments />
     </div>
   );
 }
