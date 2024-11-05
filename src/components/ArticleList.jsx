@@ -2,7 +2,7 @@ import { ArticleCard } from "./ArticleCard";
 
 export function ArticleList({ articles, isLoading }) {
   if (isLoading) {
-    return <h2>Loading...</h2>;
+    return <h1>Loading...</h1>;
   }
   return (
     <ul>
