@@ -35,9 +35,9 @@ export function SingleArticle() {
       </button>
       <h1>{title}</h1>
       <h2>posted by: {author}</h2>
-      <h5>date: {created_at}</h5>
+      <h3>date: {created_at}</h3>
       <img className="singl_article_img" src={article_img_url} />
-      <p>{body}</p>
+      <h4 className="article_text">{body}</h4>
       <h5>votes: {votes}</h5>
       <Comments />
     </div>
