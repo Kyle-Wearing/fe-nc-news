@@ -1,6 +1,6 @@
 import { ControlBar } from "./ControlBar";
 import { ArticleList } from "./ArticleList";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getArticles } from "../../api";
 
@@ -10,6 +10,10 @@ export function Articles() {
   const [isLoading, setIsLoading] = useState(true);
 
   const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    setSearchParams("page=1");
+  }, []);
 
   useEffect(() => {
     setIsLoading(true);
