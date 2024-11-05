@@ -16,6 +16,7 @@ export function LoginForm({ setUsername }) {
       getUserByUsername(input)
         .then((username) => {
           setUsername(username);
+          sessionStorage.setItem("username", username);
           setIsError(false);
           setInput("");
           setIsLoading(false);

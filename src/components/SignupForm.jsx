@@ -17,6 +17,7 @@ export function SignupForm({ setUsername }) {
       createNewUser(inputUserName, inputName)
         .then((username) => {
           setUsername(username);
+          sessionStorage.setItem("username", username);
           setIsError(false);
           setInputName("");
           setIsLoading(false);

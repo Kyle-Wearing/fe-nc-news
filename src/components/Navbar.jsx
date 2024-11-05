@@ -13,11 +13,11 @@ export function Navbar({ username, setUsername }) {
           <Link
             onClick={() => {
               setUsername(null);
+              sessionStorage.removeItem("username");
             }}
             to="/"
           >
-            {" "}
-            Signout{" "}
+            Signout
           </Link>
         </>
       )}
