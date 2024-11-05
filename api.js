@@ -26,6 +26,14 @@ export function getCommentsByArticle(article_id) {
   });
 }
 
+export function patchArticleById(article_id, inc_votes) {
+  return api
+    .patch(`/articles/${article_id}`, { inc_votes })
+    .then((response) => {
+      return response;
+    });
+}
+
 export function getUserByUsername(username) {
   return api.get(`/users/${username}`).then((response) => {
     return response.data.user.username;

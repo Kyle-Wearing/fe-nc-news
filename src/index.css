@@ -56,3 +56,30 @@ p {
   margin-left: 15%;
   margin-right: 15%;
 }
+
+.unclicked_like_button {
+  width: 100%;
+  height: 100%;
+  color: #666;
+  background-color: #f0f0f0;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.clicked_like_button {
+  width: 100%;
+  height: 100%;
+  color: blue;
+  border: 2px solid blue;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.article_votes_container {
+  display: flex;
+  margin-left: 30%;
+  margin-right: 30%;
+  gap: 5%;
+}
