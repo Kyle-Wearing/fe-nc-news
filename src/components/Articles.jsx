@@ -8,6 +8,7 @@ export function Articles() {
   const [searchParams, setSearchParams] = useSearchParams(
     "page=1&sort_by=created_at&order=desc&topic="
   );
+
   const page = searchParams.get("page");
   const topic = searchParams.get("topic");
   const sort_by = searchParams.get("sort_by");

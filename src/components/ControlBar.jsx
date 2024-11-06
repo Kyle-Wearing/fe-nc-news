@@ -11,6 +11,7 @@ export function ControlBar({
   const [topics, setTopics] = useState([]);
   const [topic, setTopic] = useState("");
   const [sortBy, setSortBy] = useState("created_at");
+  const [order, setOrder] = useState("desc");
 
   useEffect(() => {
     getTopics().then((response) => {
@@ -22,8 +23,9 @@ export function ControlBar({
     const newParams = new URLSearchParams(searchParams);
     newParams.set("topic", topic);
     newParams.set("sort_by", sortBy);
+    newParams.set("order", order);
     setSearchParams(newParams);
-  }, [topic, sortBy]);
+  }, [topic, sortBy, order]);
 
   function handleClick(num) {
     if (isLoading) {
@@ -41,8 +43,8 @@ export function ControlBar({
   }
 
   return (
-    <div className="control_bar">
-      <label className="selector">
+    <>
+      <div className="control_bar">
         <select
           value={searchParams.get("topic")}
           onChange={(e) => {
@@ -62,8 +64,6 @@ export function ControlBar({
             );
           })}
         </select>
-      </label>
-      <label className="selector">
         <select
           value={searchParams.get("sort_by")}
           onChange={(e) => {
@@ -79,16 +79,33 @@ export function ControlBar({
             votes
           </option>
           <option key="comment_count" value="comment_count">
-            comment count
+            comments
           </option>
         </select>
-      </label>
-      <button className="page_button" onClick={() => handleClick(-1)}>
-        prev
-      </button>
-      <button className="page_button" onClick={() => handleClick(1)}>
-        next
-      </button>
-    </div>
+        <select
+          value={searchParams.get("order")}
+          onChange={(e) => {
+            setOrder(e.target.value);
+          }}
+          name="sort_by"
+          className="selector"
+        >
+          <option key="desc" value="desc">
+            descending
+          </option>
+          <option key="asc" value="asc">
+            ascending
+          </option>
+        </select>
+      </div>
+      <div className="page_button_container">
+        <button className="page_button" onClick={() => handleClick(-1)}>
+          prev
+        </button>
+        <button className="page_button" onClick={() => handleClick(1)}>
+          next
+        </button>
+      </div>
+    </>
   );
 }
