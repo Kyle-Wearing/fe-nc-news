@@ -4,10 +4,13 @@ const api = axios.create({
   baseURL: "https://kyle-wearing-be-nc-news.onrender.com/api",
 });
 
-export function getArticles(page) {
+export function getArticles(page, topic) {
   let queryStr = "?";
   if (page) {
     queryStr += `p=${page}`;
+  }
+  if (topic) {
+    queryStr += `&topic=${topic}`;
   }
   return api.get(`/articles${queryStr}`).then((response) => {
     return response.data.articles;
@@ -45,6 +48,15 @@ export function postCommentByArticleId(article_id, username, body) {
 export function deleteCommentById(comment_id) {
   return api.delete(`/comments/${comment_id}`).then((response) => {
     return response;
+  });
+}
+
+export function getTopics() {
+  return api.get("/topics").then((response) => {
+    const topics = response.data.topics.map((topic) => {
+      return topic.slug;
+    });
+    return topics;
   });
 }
 

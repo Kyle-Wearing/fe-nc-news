@@ -21,7 +21,7 @@ export function SingleArticle({ username }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getArticleById(Number(article_id)).then((response) => {
+    getArticleById(article_id).then((response) => {
       setArticle(response);
       setVotes(response.votes);
       if (!userVote) {
