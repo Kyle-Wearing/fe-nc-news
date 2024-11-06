@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { postCommentByArticleId } from "../../api";
 import { useParams } from "react-router-dom";
+import { UsernameContext } from "./UsernameContext";
 
 export function NewComment({ setComments }) {
   const { username } = useContext(UsernameContext);

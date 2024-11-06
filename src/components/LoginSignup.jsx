@@ -3,7 +3,6 @@ import { LoginForm } from "./LoginForm";
 import { SignupForm } from "./SignupForm";
 
 export function LoginSignup() {
-  const { setUsername } = useContext(UsernameContext);
   const [signUpClicked, setSignUpClicked] = useState(false);
   const [message, setMessage] = useState("signup");
 

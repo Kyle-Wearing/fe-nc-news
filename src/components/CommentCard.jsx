@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { deleteCommentById } from "../../api";
+import { UsernameContext } from "./UsernameContext";
 
 export function CommentCard(props) {
   const { username } = useContext(UsernameContext);

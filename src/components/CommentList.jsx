@@ -4,7 +4,6 @@ import { getCommentsByArticle } from "../../api";
 import { useParams } from "react-router-dom";
 
 export function CommentList({ comments, setComments }) {
-  const { username } = useContext(UsernameContext);
   const [isLoading, setIsLoading] = useState(true);
 
   const { article_id } = useParams();
