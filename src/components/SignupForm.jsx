@@ -23,7 +23,7 @@ export function SignupForm() {
           setIsError(false);
           setInputName("");
           setIsLoading(false);
-          naviagte("/");
+          naviagte(-1);
         })
         .catch((err) => {
           setIsLoading(false);

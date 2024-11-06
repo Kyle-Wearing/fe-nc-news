@@ -22,7 +22,7 @@ export function LoginForm() {
           setIsError(false);
           setInput("");
           setIsLoading(false);
-          navigate("/");
+          navigate(-1);
         })
         .catch((err) => {
           setIsLoading(false);

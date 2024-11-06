@@ -18,7 +18,6 @@ export function Navbar() {
               setUsername(null);
               sessionStorage.removeItem("username");
             }}
-            to="/"
           >
             Signout
           </Link>
