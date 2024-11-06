@@ -33,7 +33,7 @@ export function Articles() {
         page={page}
         isLoading={isLoading}
       />
-      <h1>Showing all {topic ? topic : null} topics</h1>
+      <h1>Showing all {topic ? topic : null} articles</h1>
       <ArticleList isLoading={isLoading} articles={articles} />
     </>
   );
