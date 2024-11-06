@@ -33,7 +33,7 @@ export function CommentCard(props) {
 
   return (
     <div className="comment_card">
-      <p>posted by: {author}</p>
+      <p>posted by:{username === author ? "you" : author}</p>
       <p>date: {new Date(created_at).toLocaleString()}</p>
       <p>{body}</p>
       <p>votes: {votes}</p>
