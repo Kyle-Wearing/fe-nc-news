@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getUserByUsername } from "../../api";
 
-export function LoginForm({ setUsername }) {
+export function LoginForm() {
+  const { setUsername } = useContext(UsernameContext);
   const [input, setInput] = useState("");
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);

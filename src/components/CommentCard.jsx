@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { deleteCommentById } from "../../api";
+import { UsernameContext } from "./UsernameContext";
 
 export function CommentCard(props) {
+  const { username } = useContext(UsernameContext);
   const { author, body, created_at, votes, comment_id } = props.comment;
-  const { username, setComments } = props;
+  const { setComments } = props;
 
   const [isDeleting, setIsDeleting] = useState(false);
 

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Comments } from "./Comments";
 import { VoteButtons } from "./VoteButtons";
 
-export function SingleArticle({ username }) {
+export function SingleArticle() {
   const { article_id } = useParams();
 
   const [article, setArticle] = useState({});
@@ -58,7 +58,7 @@ export function SingleArticle({ username }) {
         setUserVote={setUserVote}
         setVotes={setVotes}
       />
-      <Comments username={username} />
+      <Comments />
     </div>
   );
 }
