@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getUserByUsername } from "../../api";
+import { UsernameContext } from "./UsernameContext";
 
 export function LoginForm() {
   const { setUsername } = useContext(UsernameContext);
