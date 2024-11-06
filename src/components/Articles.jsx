@@ -5,24 +5,24 @@ import { useState, useEffect } from "react";
 import { getArticles } from "../../api";
 
 export function Articles() {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams(
+    "page=1&sort_by=created_at&order=desc&topic="
+  );
   const page = searchParams.get("page");
   const topic = searchParams.get("topic");
+  const sort_by = searchParams.get("sort_by");
+  const order = searchParams.get("order");
   const [isLoading, setIsLoading] = useState(true);
 
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    setSearchParams("page=1&topic=");
-  }, []);
-
-  useEffect(() => {
     setIsLoading(true);
-    getArticles(page, topic).then((response) => {
+    getArticles(page, sort_by, order, topic).then((response) => {
       setArticles(response);
       setIsLoading(false);
     });
-  }, [page, topic]);
+  }, [page, topic, sort_by, order]);
 
   return (
     <>

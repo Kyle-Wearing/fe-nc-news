@@ -7,7 +7,7 @@ export function Navbar() {
   return (
     <nav>
       <Link to="/"> Home </Link>
-      <Link to="/articles?p=1"> Articles </Link>
+      <Link to="/articles"> Articles </Link>
       {!username ? (
         <Link to="/login-signup"> Login/Signup </Link>
       ) : (
