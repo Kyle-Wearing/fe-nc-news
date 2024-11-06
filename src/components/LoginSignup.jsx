@@ -2,7 +2,8 @@ import { useState } from "react";
 import { LoginForm } from "./LoginForm";
 import { SignupForm } from "./SignupForm";
 
-export function LoginSignup({ setUsername }) {
+export function LoginSignup() {
+  const { setUsername } = useContext(UsernameContext);
   const [signUpClicked, setSignUpClicked] = useState(false);
   const [message, setMessage] = useState("signup");
 
@@ -17,11 +18,7 @@ export function LoginSignup({ setUsername }) {
 
   return (
     <>
-      {!signUpClicked ? (
-        <LoginForm setUsername={setUsername} />
-      ) : (
-        <SignupForm setUsername={setUsername} />
-      )}
+      {!signUpClicked ? <LoginForm /> : <SignupForm />}
       <button onClick={handleClick}>Click to {message}</button>
     </>
   );

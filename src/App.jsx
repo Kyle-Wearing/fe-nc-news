@@ -5,6 +5,7 @@ import { Home } from "./components/Home";
 import { useEffect, useState } from "react";
 import { LoginSignup } from "./components/LoginSignup";
 import { SingleArticle } from "./components/SingleArticle";
+import { UsernameContext } from "./components/UsernameContext";
 
 function App() {
   const [username, setUsername] = useState(null);
@@ -15,21 +16,20 @@ function App() {
 
   return (
     <>
-      <Navbar username={username} setUsername={setUsername} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/articles" element={<Articles />} />
-        <Route
-          path="/articles/:article_id"
-          element={<SingleArticle username={username} />}
-        />
-        <Route
-          path="/login-signup"
-          element={
-            <LoginSignup username={username} setUsername={setUsername} />
-          }
-        />
-      </Routes>
+      <UsernameContext.Provider value={{ username, setUsername }}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/articles" element={<Articles />} />
+          <Route path="/articles/:article_id" element={<SingleArticle />} />
+          <Route
+            path="/login-signup"
+            element={
+              <LoginSignup username={username} setUsername={setUsername} />
+            }
+          />
+        </Routes>
+      </UsernameContext.Provider>
     </>
   );
 }

@@ -3,7 +3,8 @@ import { CommentCard } from "./CommentCard";
 import { getCommentsByArticle } from "../../api";
 import { useParams } from "react-router-dom";
 
-export function CommentList({ username, comments, setComments }) {
+export function CommentList({ comments, setComments }) {
+  const { username } = useContext(UsernameContext);
   const [isLoading, setIsLoading] = useState(true);
 
   const { article_id } = useParams();
@@ -24,11 +25,7 @@ export function CommentList({ username, comments, setComments }) {
       {comments.map((comment) => {
         return (
           <li className="comment_list" key={comment.comment_id}>
-            <CommentCard
-              comment={comment}
-              username={username}
-              setComments={setComments}
-            />
+            <CommentCard comment={comment} setComments={setComments} />
           </li>
         );
       })}

@@ -2,7 +2,8 @@ import { useState } from "react";
 import { postCommentByArticleId } from "../../api";
 import { useParams } from "react-router-dom";
 
-export function NewComment({ username, setComments }) {
+export function NewComment({ setComments }) {
+  const { username } = useContext(UsernameContext);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 

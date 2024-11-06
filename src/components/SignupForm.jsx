@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createNewUser } from "../../api";
 
-export function SignupForm({ setUsername }) {
+export function SignupForm() {
+  const { setUsername } = useContext(UsernameContext);
   const [inputName, setInputName] = useState("");
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);

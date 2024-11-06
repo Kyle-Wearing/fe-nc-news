@@ -1,10 +1,13 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { getArticleById } from "../../api";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Comments } from "./Comments";
 import { VoteButtons } from "./VoteButtons";
+import { UsernameContext } from "./UsernameContext";
 
-export function SingleArticle({ username }) {
+export function SingleArticle() {
+  const { username } = useContext(UsernameContext);
+
   const { article_id } = useParams();
 
   const [article, setArticle] = useState({});
@@ -58,7 +61,7 @@ export function SingleArticle({ username }) {
         setUserVote={setUserVote}
         setVotes={setVotes}
       />
-      <Comments username={username} />
+      <Comments />
     </div>
   );
 }
