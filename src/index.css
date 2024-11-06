@@ -32,6 +32,18 @@ ul {
   gap: 5px;
 }
 
+.page_button {
+  width: 100%;
+  font-size: large;
+}
+
+.topic_select {
+  width: 100%;
+  text-align: center;
+  text-align-last: center;
+  font-size: large;
+}
+
 .singl_article_img {
   width: 350px;
   height: auto;
