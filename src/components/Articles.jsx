@@ -22,7 +22,7 @@ export function Articles() {
       setArticles(response);
       setIsLoading(false);
     });
-  }, [page, topic, sort_by, order]);
+  }, [searchParams]);
 
   return (
     <>

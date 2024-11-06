@@ -7,7 +7,10 @@ export function Navbar() {
   return (
     <nav>
       <Link to="/"> Home </Link>
-      <Link to="/articles"> Articles </Link>
+      <Link to="/articles?page=1&sort_by=created_at&order=desc&topic=">
+        {" "}
+        Articles{" "}
+      </Link>
       {!username ? (
         <Link to="/login-signup"> Login/Signup </Link>
       ) : (

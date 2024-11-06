@@ -10,6 +10,7 @@ export function ControlBar({
 }) {
   const [topics, setTopics] = useState([]);
   const [topic, setTopic] = useState("");
+  const [sortBy, setSortBy] = useState("created_at");
 
   useEffect(() => {
     getTopics().then((response) => {
@@ -20,8 +21,9 @@ export function ControlBar({
   useEffect(() => {
     const newParams = new URLSearchParams(searchParams);
     newParams.set("topic", topic);
+    newParams.set("sort_by", sortBy);
     setSearchParams(newParams);
-  }, [topic]);
+  }, [topic, sortBy]);
 
   function handleClick(num) {
     if (isLoading) {
@@ -40,14 +42,14 @@ export function ControlBar({
 
   return (
     <div className="control_bar">
-      <label className="topic_select">
+      <label className="selector">
         <select
-          value={topic}
+          value={searchParams.get("topic")}
           onChange={(e) => {
             setTopic(e.target.value);
           }}
           name="topics"
-          className="topic_select"
+          className="selector"
         >
           <option key={"-"} value={""}>
             All topics
@@ -61,7 +63,26 @@ export function ControlBar({
           })}
         </select>
       </label>
-      <p>order</p>
+      <label className="selector">
+        <select
+          value={searchParams.get("sort_by")}
+          onChange={(e) => {
+            setSortBy(e.target.value);
+          }}
+          name="sort_by"
+          className="selector"
+        >
+          <option key="date" value="created_at">
+            date
+          </option>
+          <option key="votes" value="votes">
+            votes
+          </option>
+          <option key="comment_count" value="comment_count">
+            comment count
+          </option>
+        </select>
+      </label>
       <button className="page_button" onClick={() => handleClick(-1)}>
         prev
       </button>
