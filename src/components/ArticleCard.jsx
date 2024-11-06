@@ -17,7 +17,7 @@ export function ArticleCard({ article }) {
         <li>
           <h4>{title}</h4>
           <h5>posted by: {author}</h5>
-          <p>{String(new Date(created_at))}</p>
+          <p>{new Date(created_at).toLocaleString()}</p>
           <img className="article_img" src={article_img_url} />
           <p>votes: {votes}</p>
           <p>comments: {comment_count}</p>
