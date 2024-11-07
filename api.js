@@ -12,6 +12,7 @@ export function getArticles(p, sort_by, order, topic) {
         sort_by,
         order,
         topic,
+        limit: 5,
       },
     })
     .then((response) => {
