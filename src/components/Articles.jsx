@@ -25,6 +25,10 @@ export function Articles() {
     });
   }, [searchParams]);
 
+  if (isLoading) {
+    return <h1>Loading</h1>;
+  }
+
   return (
     <>
       <ControlBar
@@ -32,10 +36,9 @@ export function Articles() {
         searchParams={searchParams}
         articles={articles}
         page={page}
-        isLoading={isLoading}
       />
       <h1>Showing all {topic ? topic : null} articles</h1>
-      <ArticleList isLoading={isLoading} articles={articles} />
+      <ArticleList articles={articles} />
     </>
   );
 }
