@@ -13,5 +13,9 @@ export function Home() {
       setIsLoading(false);
     });
   }, []);
+
+  if (isLoading) {
+    return <h1>Loading</h1>;
+  }
   return <ArticleList isLoading={isLoading} articles={HomeArticles} />;
 }
