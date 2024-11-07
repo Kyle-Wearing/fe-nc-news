@@ -5,22 +5,18 @@ const api = axios.create({
 });
 
 export function getArticles(page, sort_by, order, topic) {
-  let queryStr = "?";
-  if (page) {
-    queryStr += `p=${page}`;
-  }
-  if (sort_by) {
-    queryStr += `&sort_by=${sort_by}`;
-  }
-  if (order) {
-    queryStr += `&order=${order}`;
-  }
-  if (topic) {
-    queryStr += `&topic=${topic}`;
-  }
-  return api.get(`/articles${queryStr}`).then((response) => {
-    return response.data.articles;
-  });
+  return api
+    .get(`/articles`, {
+      params: {
+        page,
+        sort_by,
+        order,
+        topic,
+      },
+    })
+    .then((response) => {
+      return response.data.articles;
+    });
 }
 
 export function getArticleById(article_id) {

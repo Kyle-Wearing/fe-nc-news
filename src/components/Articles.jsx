@@ -10,7 +10,7 @@ export function Articles() {
   );
 
   const page = searchParams.get("page");
-  const topic = searchParams.get("topic");
+  const topic = searchParams.get("topic") || null;
   const sort_by = searchParams.get("sort_by");
   const order = searchParams.get("order");
   const [isLoading, setIsLoading] = useState(true);
