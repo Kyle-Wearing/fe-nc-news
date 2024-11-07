@@ -10,7 +10,9 @@ import { ErrorPage } from "./components/ErrorPage";
 import { Header } from "./components/Header";
 
 function App() {
-  const [username, setUsername] = useState(null);
+  const [username, setUsername] = useState("user");
+
+  sessionStorage.setItem("username", "user");
 
   useEffect(() => {
     setUsername(sessionStorage.getItem("username"));
