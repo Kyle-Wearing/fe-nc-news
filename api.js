@@ -4,10 +4,16 @@ const api = axios.create({
   baseURL: "https://kyle-wearing-be-nc-news.onrender.com/api",
 });
 
-export function getArticles(page, topic) {
+export function getArticles(page, sort_by, order, topic) {
   let queryStr = "?";
   if (page) {
     queryStr += `p=${page}`;
+  }
+  if (sort_by) {
+    queryStr += `&sort_by=${sort_by}`;
+  }
+  if (order) {
+    queryStr += `&order=${order}`;
   }
   if (topic) {
     queryStr += `&topic=${topic}`;
