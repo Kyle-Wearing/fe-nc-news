@@ -4,11 +4,11 @@ const api = axios.create({
   baseURL: "https://kyle-wearing-be-nc-news.onrender.com/api",
 });
 
-export function getArticles(page, sort_by, order, topic) {
+export function getArticles(p, sort_by, order, topic) {
   return api
     .get(`/articles`, {
       params: {
-        page,
+        p,
         sort_by,
         order,
         topic,
