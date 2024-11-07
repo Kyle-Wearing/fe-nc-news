@@ -31,7 +31,7 @@ export function ControlBar({ setSearchParams, searchParams, page, articles }) {
     if (Number(page) === 1 && num === -1) {
       return;
     }
-    if (articles.length !== 10 && num === 1) {
+    if (articles.length !== 5 && num === 1) {
       return;
     }
     const newParams = new URLSearchParams(searchParams);

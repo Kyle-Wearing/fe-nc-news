@@ -8,14 +8,15 @@ export function getArticles(p, sort_by, order, topic) {
   return api
     .get(`/articles`, {
       params: {
+        limit: "5",
         p,
         sort_by,
         order,
         topic,
-        limit: 5,
       },
     })
     .then((response) => {
+      console.log(response.data);
       return response.data.articles;
     });
 }
