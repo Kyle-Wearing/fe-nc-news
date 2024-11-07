@@ -7,7 +7,6 @@ import { LoginSignup } from "./components/LoginSignup";
 import { SingleArticle } from "./components/SingleArticle";
 import { UsernameContext } from "./components/UsernameContext";
 import { ErrorPage } from "./components/ErrorPage";
-import { Header } from "./components/Header";
 
 function App() {
   const [username, setUsername] = useState(null);
@@ -19,7 +18,6 @@ function App() {
   return (
     <>
       <UsernameContext.Provider value={{ username, setUsername }}>
-        <Header />
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
