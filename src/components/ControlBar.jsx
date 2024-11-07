@@ -9,15 +9,21 @@ export function ControlBar({
   isLoading,
 }) {
   const [topics, setTopics] = useState([]);
-  const [topic, setTopic] = useState("");
-  const [sortBy, setSortBy] = useState("created_at");
-  const [order, setOrder] = useState("desc");
+  const [topic, setTopic] = useState(searchParams.get("topic"));
+  const [sortBy, setSortBy] = useState(searchParams.get("sort_by"));
+  const [order, setOrder] = useState(searchParams.get("order"));
 
   useEffect(() => {
     getTopics().then((response) => {
       setTopics(response);
     });
   }, []);
+
+  useEffect(() => {
+    setTopic(searchParams.get("topic"));
+    setSortBy(searchParams.get("sort_by"));
+    setOrder(searchParams.get("order"));
+  }, [searchParams]);
 
   useEffect(() => {
     const newParams = new URLSearchParams(searchParams);
@@ -46,7 +52,7 @@ export function ControlBar({
     <>
       <div className="control_bar">
         <select
-          value={searchParams.get("topic")}
+          value={topic}
           onChange={(e) => {
             setTopic(e.target.value);
           }}
@@ -65,7 +71,7 @@ export function ControlBar({
           })}
         </select>
         <select
-          value={searchParams.get("sort_by")}
+          value={sortBy}
           onChange={(e) => {
             setSortBy(e.target.value);
           }}
@@ -83,7 +89,7 @@ export function ControlBar({
           </option>
         </select>
         <select
-          value={searchParams.get("order")}
+          value={order}
           onChange={(e) => {
             setOrder(e.target.value);
           }}
