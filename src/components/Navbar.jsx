@@ -44,15 +44,26 @@ export function Navbar() {
             </Button>
           </Link>
           {!username ? (
-            <Link to="/login-signup">
-              <Button
-                className="nav_button"
-                variant="outlined"
-                color="fire_brick"
-              >
-                <span className="nav_button_text">Login/Signup</span>
-              </Button>
-            </Link>
+            <>
+              <Link to="/login">
+                <Button
+                  className="nav_button"
+                  variant="outlined"
+                  color="fire_brick"
+                >
+                  <span className="nav_button_text">Login</span>
+                </Button>
+              </Link>
+              <Link to="/signup">
+                <Button
+                  className="nav_button"
+                  variant="outlined"
+                  color="fire_brick"
+                >
+                  <span className="nav_button_text">Signup</span>
+                </Button>
+              </Link>
+            </>
           ) : (
             <>
               <Link to="/post-article">

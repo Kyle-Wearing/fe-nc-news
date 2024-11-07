@@ -109,10 +109,9 @@ p {
 }
 
 .web_header {
-  margin-left: 15%;
   color: #ecf007;
   margin-top: 0;
-  text-align: left;
+
   font-size: 5vw;
   margin-bottom: 15px;
 }
@@ -123,8 +122,8 @@ p {
 }
 
 .links {
-  margin-left: 15%;
-  text-align: left;
+  display: flex;
+  justify-content: center;
   text-decoration: none;
 }
 

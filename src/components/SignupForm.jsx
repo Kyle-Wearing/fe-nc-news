@@ -10,7 +10,7 @@ export function SignupForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [inputUserName, setInputUserName] = useState("");
 
-  const naviagte = useNavigate();
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -23,7 +23,7 @@ export function SignupForm() {
           setIsError(false);
           setInputName("");
           setIsLoading(false);
-          naviagte(-1);
+          navigate(-1);
         })
         .catch((err) => {
           setIsLoading(false);
@@ -56,6 +56,8 @@ export function SignupForm() {
         <button type="submit">sign up</button>
       </form>
       {isError ? <p>Username already exists</p> : null}
+      <h4 onClick={() => navigate("/login")}>Already have an account?</h4>
+      <button onClick={() => navigate("/login")}>Login</button>
     </>
   );
 }

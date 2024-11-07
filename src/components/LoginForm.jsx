@@ -45,6 +45,8 @@ export function LoginForm() {
         <button type="submit">log in</button>
       </form>
       {isError ? <p>Username does not exist</p> : null}
+      <h4 onClick={() => navigate("/signup")}>Dont have an account?</h4>
+      <button onClick={() => navigate("/signup")}>Sign Up</button>
     </>
   );
 }
