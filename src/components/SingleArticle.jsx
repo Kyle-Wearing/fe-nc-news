@@ -21,14 +21,18 @@ export function SingleArticle() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getArticleById(article_id).then((response) => {
-      setArticle(response);
-      setVotes(response.votes);
-      if (!userVote) {
-        localStorage.setItem(`voted_${article_id}`, 0);
-      }
-      setIsLoading(false);
-    });
+    getArticleById(article_id)
+      .then((response) => {
+        setArticle(response);
+        setVotes(response.votes);
+        if (!userVote) {
+          localStorage.setItem(`voted_${article_id}`, 0);
+        }
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        navigate("/error", { state: { err: "article" } });
+      });
   }, []);
 
   if (isLoading) {
