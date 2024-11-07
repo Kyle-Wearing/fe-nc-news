@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 import { getTopics } from "../../api";
 
-export function ControlBar({
-  setSearchParams,
-  searchParams,
-  page,
-  articles,
-  isLoading,
-}) {
+export function ControlBar({ setSearchParams, searchParams, page, articles }) {
   const [topics, setTopics] = useState([]);
   const [topic, setTopic] = useState(searchParams.get("topic"));
   const [sortBy, setSortBy] = useState(searchParams.get("sort_by"));
@@ -34,9 +28,6 @@ export function ControlBar({
   }, [topic, sortBy, order]);
 
   function handleClick(num) {
-    if (isLoading) {
-      return;
-    }
     if (Number(page) === 1 && num === -1) {
       return;
     }

@@ -7,22 +7,27 @@ export function NewComment({ setComments }) {
   const { username } = useContext(UsernameContext);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
+  const [isError, setIsError] = useState(false);
   const { article_id } = useParams();
 
   function handleSubmit(e) {
     e.preventDefault();
-    setIsLoading(true);
-    return postCommentByArticleId(article_id, username, input).then(
-      (resposne) => {
-        setComments((currComments) => {
-          const newComments = [resposne, ...currComments];
-          return newComments;
-        });
-        setIsLoading(false);
-        setInput("");
-      }
-    );
+    if (input) {
+      setIsLoading(true);
+      return postCommentByArticleId(article_id, username, input).then(
+        (resposne) => {
+          setComments((currComments) => {
+            const newComments = [resposne, ...currComments];
+            return newComments;
+          });
+          setIsLoading(false);
+          setInput("");
+          setIsError(false);
+        }
+      );
+    } else {
+      setIsError(true);
+    }
   }
 
   return (
@@ -38,6 +43,10 @@ export function NewComment({ setComments }) {
           <p>Sending comment...</p>
         )}
       </form>
+      {isError && !input && username ? <p>cant post empty comment</p> : null}
+      {isError && !input && !username ? (
+        <p>must be logged in to comment</p>
+      ) : null}
     </>
   );
 }

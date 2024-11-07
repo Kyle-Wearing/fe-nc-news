@@ -10,7 +10,7 @@ export function Articles() {
   );
 
   const page = searchParams.get("page");
-  const topic = searchParams.get("topic");
+  const topic = searchParams.get("topic") || null;
   const sort_by = searchParams.get("sort_by");
   const order = searchParams.get("order");
   const [isLoading, setIsLoading] = useState(true);
@@ -25,6 +25,10 @@ export function Articles() {
     });
   }, [searchParams]);
 
+  if (isLoading) {
+    return <h1>Loading</h1>;
+  }
+
   return (
     <>
       <ControlBar
@@ -32,10 +36,9 @@ export function Articles() {
         searchParams={searchParams}
         articles={articles}
         page={page}
-        isLoading={isLoading}
       />
       <h1>Showing all {topic ? topic : null} articles</h1>
-      <ArticleList isLoading={isLoading} articles={articles} />
+      <ArticleList articles={articles} />
     </>
   );
 }

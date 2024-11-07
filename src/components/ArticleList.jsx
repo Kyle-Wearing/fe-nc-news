@@ -1,9 +1,6 @@
 import { ArticleCard } from "./ArticleCard";
 
-export function ArticleList({ articles, isLoading }) {
-  if (isLoading) {
-    return <h1>Loading...</h1>;
-  }
+export function ArticleList({ articles }) {
   return (
     <ul>
       {articles.map((article) => {
