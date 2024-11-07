@@ -1,7 +1,8 @@
 body {
-  text-align: center;
   background-color: #dee5e5;
   margin: 0;
+  padding: 0;
+  text-align: center;
 }
 
 ul {
@@ -131,6 +132,7 @@ p {
   background-color: #292a2d;
 }
 
-.link {
+.links {
+  text-align: left;
   text-decoration: none;
 }
