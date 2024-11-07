@@ -12,7 +12,7 @@ export function NewComment({ setComments }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (input) {
+    if (input && username) {
       setIsLoading(true);
       return postCommentByArticleId(article_id, username, input).then(
         (resposne) => {
@@ -44,9 +44,7 @@ export function NewComment({ setComments }) {
         )}
       </form>
       {isError && !input && username ? <p>cant post empty comment</p> : null}
-      {isError && !input && !username ? (
-        <p>must be logged in to comment</p>
-      ) : null}
+      {isError && !username ? <p>must be logged in to comment</p> : null}
     </>
   );
 }
