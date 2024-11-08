@@ -269,3 +269,7 @@ p {
 .vote_button {
   all: unset;
 }
+
+.loading {
+  margin-top: 15px;
+}

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UsernameContext } from "./UsernameContext";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid2";
@@ -8,6 +8,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 export function Navbar() {
   const { username, setUsername } = useContext(UsernameContext);
+
+  const navigate = useNavigate();
 
   const theme = createTheme({
     palette: {
@@ -81,6 +83,7 @@ export function Navbar() {
                   variant="outlined"
                   color="fire_brick"
                   onClick={() => {
+                    navigate(0);
                     setUsername(null);
                     sessionStorage.removeItem("username");
                   }}

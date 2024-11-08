@@ -3,16 +3,17 @@ import { ArticleList } from "./ArticleList";
 import { useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getArticles } from "../../api";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export function Articles() {
   const [searchParams, setSearchParams] = useSearchParams(
     "page=1&sort_by=created_at&order=desc&topic="
   );
 
-  const page = searchParams.get("page");
+  const page = searchParams.get("page") || 1;
   const topic = searchParams.get("topic") || null;
-  const sort_by = searchParams.get("sort_by");
-  const order = searchParams.get("order");
+  const sort_by = searchParams.get("sort_by") || "created_at";
+  const order = searchParams.get("order") || "desc";
   const [isLoading, setIsLoading] = useState(true);
 
   const [articles, setArticles] = useState([
@@ -44,7 +45,11 @@ export function Articles() {
         articles={articles}
         page={page}
       />
-      <h1>Showing all {topic ? topic : null} articles</h1>
+      {isLoading ? (
+        <CircularProgress className="loading" />
+      ) : (
+        <h1>Showing all {topic ? topic : null} articles</h1>
+      )}
       {<ArticleList articles={articles} isLoading={isLoading} />}
     </>
   );
