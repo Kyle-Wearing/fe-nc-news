@@ -3,7 +3,17 @@ import { ArticleList } from "./ArticleList";
 import { getArticles } from "../../api";
 
 export function Home() {
-  const [HomeArticles, setHomeArticles] = useState([]);
+  const [HomeArticles, setHomeArticles] = useState([
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+  ]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -14,8 +24,5 @@ export function Home() {
     });
   }, []);
 
-  if (isLoading) {
-    return <h1>Loading</h1>;
-  }
   return <ArticleList isLoading={isLoading} articles={HomeArticles} />;
 }

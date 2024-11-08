@@ -15,7 +15,17 @@ export function Articles() {
   const order = searchParams.get("order");
   const [isLoading, setIsLoading] = useState(true);
 
-  const [articles, setArticles] = useState([]);
+  const [articles, setArticles] = useState([
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+  ]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -35,7 +45,7 @@ export function Articles() {
         page={page}
       />
       <h1>Showing all {topic ? topic : null} articles</h1>
-      {!isLoading ? <ArticleList articles={articles} /> : <h1>Loading...</h1>}
+      {<ArticleList articles={articles} isLoading={isLoading} />}
     </>
   );
 }
