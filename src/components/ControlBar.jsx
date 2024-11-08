@@ -50,7 +50,6 @@ export function ControlBar({
     newParams.set("topic", topic);
     newParams.set("sort_by", sortBy);
     newParams.set("order", order);
-
     setSearchParams(newParams);
   }, [topic, sortBy, order]);
 
@@ -132,20 +131,20 @@ export function ControlBar({
       <div className="page_button_container">
         <ThemeProvider theme={theme}>
           <Button
+            className="page_button"
             onClick={() => handleClick(-1)}
             variant="contained"
             color="prev"
           >
-            <PageArrow className="prev_button" />
-            Prev
+            <span className="page_button_text">Prev</span>
           </Button>
           <Button
+            className="page_button"
             onClick={() => handleClick(1)}
             variant="contained"
             color="next"
           >
-            Next
-            <PageArrow className="next_button" />
+            <span className="page_button_text">Next</span>
           </Button>
         </ThemeProvider>
       </div>
