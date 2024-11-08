@@ -25,20 +25,17 @@ export function Articles() {
     });
   }, [searchParams]);
 
-  if (isLoading) {
-    return <h1>Loading</h1>;
-  }
-
   return (
     <>
       <ControlBar
+        isLoading={isLoading}
         setSearchParams={setSearchParams}
         searchParams={searchParams}
         articles={articles}
         page={page}
       />
       <h1>Showing all {topic ? topic : null} articles</h1>
-      <ArticleList articles={articles} />
+      {!isLoading ? <ArticleList articles={articles} /> : <h1>Loading...</h1>}
     </>
   );
 }

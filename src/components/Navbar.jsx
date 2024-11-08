@@ -67,20 +67,27 @@ export function Navbar() {
           ) : (
             <>
               <Link to="/post-article">
-                <Button variant="outlined" color="fire_brick">
+                <Button
+                  className="nav_button"
+                  variant="outlined"
+                  color="fire_brick"
+                >
                   <span className="nav_button_text">Post An Article</span>
                 </Button>
               </Link>
-              <Button
-                variant="outlined"
-                color="fire_brick"
-                onClick={() => {
-                  setUsername(null);
-                  sessionStorage.removeItem("username");
-                }}
-              >
-                <span className="nav_button_text">Signout</span>
-              </Button>
+              <Link>
+                <Button
+                  className="nav_button"
+                  variant="outlined"
+                  color="fire_brick"
+                  onClick={() => {
+                    setUsername(null);
+                    sessionStorage.removeItem("username");
+                  }}
+                >
+                  <span className="nav_button_text">Signout</span>
+                </Button>
+              </Link>
             </>
           )}
         </Grid>

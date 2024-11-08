@@ -1,11 +1,37 @@
 import { useEffect, useState } from "react";
 import { getTopics } from "../../api";
+import Button from "@mui/material/Button";
+import { PageArrow } from "./arrow";
+import { createTheme, ThemeProvider } from "@mui/material";
 
-export function ControlBar({ setSearchParams, searchParams, page, articles }) {
+export function ControlBar({
+  setSearchParams,
+  searchParams,
+  page,
+  articles,
+  isLoading,
+}) {
   const [topics, setTopics] = useState([]);
   const [topic, setTopic] = useState(searchParams.get("topic"));
   const [sortBy, setSortBy] = useState(searchParams.get("sort_by"));
   const [order, setOrder] = useState(searchParams.get("order"));
+
+  const theme = createTheme({
+    palette: {
+      next: {
+        main: "#3F88C5",
+        light: "#81B2D9",
+        dark: "#2F6C9D",
+        contrastText: "#000000",
+      },
+      prev: {
+        main: "#F49D37",
+        light: "#F8BC77",
+        dark: "#E9820C",
+        contrastText: "#000000",
+      },
+    },
+  });
 
   useEffect(() => {
     getTopics().then((response) => {
@@ -29,6 +55,9 @@ export function ControlBar({ setSearchParams, searchParams, page, articles }) {
   }, [topic, sortBy, order]);
 
   function handleClick(num) {
+    if (isLoading) {
+      return;
+    }
     if (Number(page) === 1 && num === -1) {
       return;
     }
@@ -44,6 +73,7 @@ export function ControlBar({ setSearchParams, searchParams, page, articles }) {
     <>
       <div className="control_bar">
         <select
+          disabled={isLoading}
           value={topic}
           onChange={(e) => {
             searchParams.set("page", 1);
@@ -64,6 +94,7 @@ export function ControlBar({ setSearchParams, searchParams, page, articles }) {
           })}
         </select>
         <select
+          disabled={isLoading}
           value={sortBy}
           onChange={(e) => {
             setSortBy(e.target.value);
@@ -82,6 +113,7 @@ export function ControlBar({ setSearchParams, searchParams, page, articles }) {
           </option>
         </select>
         <select
+          disabled={isLoading}
           value={order}
           onChange={(e) => {
             setOrder(e.target.value);
@@ -98,12 +130,24 @@ export function ControlBar({ setSearchParams, searchParams, page, articles }) {
         </select>
       </div>
       <div className="page_button_container">
-        <button className="page_button" onClick={() => handleClick(-1)}>
-          prev
-        </button>
-        <button className="page_button" onClick={() => handleClick(1)}>
-          next
-        </button>
+        <ThemeProvider theme={theme}>
+          <Button
+            onClick={() => handleClick(-1)}
+            variant="contained"
+            color="prev"
+          >
+            <PageArrow className="prev_button" />
+            Prev
+          </Button>
+          <Button
+            onClick={() => handleClick(1)}
+            variant="contained"
+            color="next"
+          >
+            Next
+            <PageArrow className="next_button" />
+          </Button>
+        </ThemeProvider>
       </div>
     </>
   );

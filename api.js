@@ -16,7 +16,6 @@ export function getArticles(p, sort_by, order, topic) {
       },
     })
     .then((response) => {
-      console.log(response.data);
       return response.data.articles;
     });
 }
