@@ -50,7 +50,7 @@ export function ControlBar({ setSearchParams, searchParams, page, articles }) {
             setTopic(e.target.value);
           }}
           name="topics"
-          className="selector"
+          className="form-select"
         >
           <option key={"-"} value={""}>
             All topics
@@ -69,7 +69,7 @@ export function ControlBar({ setSearchParams, searchParams, page, articles }) {
             setSortBy(e.target.value);
           }}
           name="sort_by"
-          className="selector"
+          className="form-select"
         >
           <option key="date" value="created_at">
             date
@@ -87,7 +87,7 @@ export function ControlBar({ setSearchParams, searchParams, page, articles }) {
             setOrder(e.target.value);
           }}
           name="sort_by"
-          className="selector"
+          className="form-select"
         >
           <option key="desc" value="desc">
             descending
