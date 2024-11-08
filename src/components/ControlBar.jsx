@@ -24,6 +24,7 @@ export function ControlBar({ setSearchParams, searchParams, page, articles }) {
     newParams.set("topic", topic);
     newParams.set("sort_by", sortBy);
     newParams.set("order", order);
+
     setSearchParams(newParams);
   }, [topic, sortBy, order]);
 
@@ -31,7 +32,7 @@ export function ControlBar({ setSearchParams, searchParams, page, articles }) {
     if (Number(page) === 1 && num === -1) {
       return;
     }
-    if (articles.length !== 5 && num === 1) {
+    if (articles.length !== 9 && num === 1) {
       return;
     }
     const newParams = new URLSearchParams(searchParams);
@@ -45,6 +46,7 @@ export function ControlBar({ setSearchParams, searchParams, page, articles }) {
         <select
           value={topic}
           onChange={(e) => {
+            searchParams.set("page", 1);
             setTopic(e.target.value);
           }}
           name="topics"

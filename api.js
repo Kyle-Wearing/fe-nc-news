@@ -8,7 +8,7 @@ export function getArticles(p, sort_by, order, topic) {
   return api
     .get(`/articles`, {
       params: {
-        limit: "5",
+        limit: 9,
         p,
         sort_by,
         order,
