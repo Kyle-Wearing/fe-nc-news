@@ -3,6 +3,8 @@ import { getArticleById } from "../../api";
 import { useEffect, useState } from "react";
 import { Comments } from "./Comments";
 import { VoteButtons } from "./VoteButtons";
+import Button from "@mui/material/Button";
+import { PageArrow } from "./arrow";
 
 export function SingleArticle() {
   const { article_id } = useParams();
@@ -43,25 +45,37 @@ export function SingleArticle() {
 
   return (
     <div>
-      <button
+      <Button
+        variant="contained"
+        className="back_button"
         onClick={() => {
           navigate(-1);
         }}
       >
-        go back
-      </button>
-      <h1>{title}</h1>
-      <h2>posted by: {author}</h2>
-      <h3>{new Date(created_at).toLocaleString()}</h3>
-      <img className="singl_article_img" src={article_img_url} />
-      <h4 className="article_text">{body}</h4>
-      <h5>votes: {votes}</h5>
-      <VoteButtons
-        id={article_id}
-        userVote={userVote}
-        setUserVote={setUserVote}
-        setVotes={setVotes}
-      />
+        <PageArrow className="prev_button" />
+        back
+      </Button>
+
+      <div className="single_article_page">
+        <div>
+          <img src={article_img_url} className="single_article_img" />
+        </div>
+        <div className="single_article_content">
+          <h1>{title}</h1>
+          <h2>posted by: {author}</h2>
+          <h2>{new Date(created_at).toLocaleString()}</h2>
+        </div>
+        <div>
+          <h5 className="single_article_body">{body}</h5>
+          <p className="single_article_votes">votes: {votes}</p>
+        </div>
+        <VoteButtons
+          id={article_id}
+          userVote={userVote}
+          setUserVote={setUserVote}
+          setVotes={setVotes}
+        />
+      </div>
       <Comments />
     </div>
   );
