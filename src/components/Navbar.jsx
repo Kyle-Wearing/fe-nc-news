@@ -74,7 +74,7 @@ export function Navbar() {
                   variant="outlined"
                   color="fire_brick"
                 >
-                  <span className="nav_button_text">Post An Article</span>
+                  <span className="nav_button_text">Post Article</span>
                 </Button>
               </Link>
               <Link>

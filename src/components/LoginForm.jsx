@@ -2,6 +2,9 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getUserByUsername } from "../../api";
 import { UsernameContext } from "./UsernameContext";
+import TextField from "@mui/material/TextField";
+import CircularProgress from "@mui/material/CircularProgress";
+import Button from "@mui/material/Button";
 
 export function LoginForm() {
   const { setUsername } = useContext(UsernameContext);
@@ -31,22 +34,41 @@ export function LoginForm() {
     }
   }
 
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <label>
-          enter username
-          <input value={input} onChange={(e) => setInput(e.target.value)} />
-        </label>
-        <button type="submit">log in</button>
-      </form>
-      {isError ? <p>Username does not exist</p> : null}
-      <h4 onClick={() => navigate("/signup")}>Dont have an account?</h4>
-      <button onClick={() => navigate("/signup")}>Sign Up</button>
+      <div className="login_form">
+        <form onSubmit={handleSubmit}>
+          <label>
+            <TextField
+              className="login_box"
+              error={isError}
+              label={"ENTER USERNAME"}
+              id="outlined-error-helper-text"
+              helperText={isError ? "username does not exist" : null}
+              value={input}
+              onChange={(e) => {
+                setInput(e.target.value);
+                setIsError(false);
+              }}
+            />
+          </label>
+          <div className="submit_button">
+            <Button type="submit" variant="outlined">
+              {isLoading ? <CircularProgress /> : "log in"}
+            </Button>
+          </div>
+        </form>
+        <div className="move_down">
+          <h4 onClick={() => navigate("/signup")}>Dont have an account?</h4>
+          <Button
+            variant="contained"
+            className="swap_button"
+            onClick={() => navigate("/signup")}
+          >
+            Sign Up
+          </Button>
+        </div>
+      </div>
     </>
   );
 }

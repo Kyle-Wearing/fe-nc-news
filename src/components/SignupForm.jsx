@@ -2,6 +2,9 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createNewUser } from "../../api";
 import { UsernameContext } from "./UsernameContext";
+import TextField from "@mui/material/TextField";
+import CircularProgress from "@mui/material/CircularProgress";
+import Button from "@mui/material/Button";
 
 export function SignupForm() {
   const { setUsername } = useContext(UsernameContext);
@@ -32,32 +35,53 @@ export function SignupForm() {
     }
   }
 
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <label>
-          username
-          <input
-            value={inputUserName}
-            onChange={(e) => setInputUserName(e.target.value)}
-          />
-        </label>
-        <label>
-          name
-          <input
-            value={inputName}
-            onChange={(e) => setInputName(e.target.value)}
-          />
-        </label>
-        <button type="submit">sign up</button>
-      </form>
-      {isError ? <p>Username already exists</p> : null}
-      <h4 onClick={() => navigate("/login")}>Already have an account?</h4>
-      <button onClick={() => navigate("/login")}>Login</button>
+      <div className="login_form">
+        <form onSubmit={handleSubmit}>
+          <label>
+            <TextField
+              className="login_box"
+              error={isError}
+              label={"ENTER USERNAME"}
+              id="outlined-error-helper-text"
+              helperText={isError ? "username already exists" : null}
+              value={inputUserName}
+              onChange={(e) => {
+                setInputUserName(e.target.value);
+                setIsError(false);
+              }}
+            />
+          </label>
+          <label>
+            <TextField
+              className="login_box"
+              label={"ENTER NAME"}
+              id="outlined"
+              value={inputName}
+              onChange={(e) => {
+                setInputName(e.target.value);
+                setIsError(false);
+              }}
+            />
+          </label>
+          <div className="submit_button">
+            <Button type="submit" variant="outlined">
+              {isLoading ? <CircularProgress /> : "Sign Up"}
+            </Button>
+          </div>
+        </form>
+        <div className="move_down">
+          <h4 onClick={() => navigate("/login")}>Already have an account?</h4>
+          <Button
+            variant="contained"
+            className="swap_button"
+            onClick={() => navigate("/login")}
+          >
+            Login
+          </Button>
+        </div>
+      </div>
     </>
   );
 }
