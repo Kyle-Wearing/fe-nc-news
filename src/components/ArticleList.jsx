@@ -5,9 +5,9 @@ export function ArticleList({ articles, isLoading }) {
   if (isLoading) {
     return (
       <ul className="article_list">
-        {articles.map((x) => {
+        {articles.map((x, index) => {
           return (
-            <li>
+            <li key={index}>
               <Skeleton
                 variant="rectangular"
                 className="article_card"
