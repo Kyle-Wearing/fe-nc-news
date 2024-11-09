@@ -106,6 +106,18 @@ p {
   font-size: 100%;
 }
 
+@media (max-width: 420px) {
+  .nav_button_text {
+    font-size: 80%;
+  }
+}
+
+@media (max-width: 365px) {
+  .nav_button_text {
+    font-size: 60%;
+  }
+}
+
 .nav_button {
   width: max-content;
   padding: 0;
